@@ -1,8 +1,7 @@
-from __future__ import print_function
 import re
-from urllib.parse import urljoin
 
 import requests
+from six.moves.urllib.parse import urljoin
 
 from pyimgflip import Config, MemeTemplate
 

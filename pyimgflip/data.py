@@ -1,8 +1,10 @@
 import inspect
 import logging
-from urllib.parse import unquote, urljoin
+from operator import itemgetter
+from collections import OrderedDict
 
 import requests
+from six.moves.urllib.parse import unquote, urljoin
 
 from pyimgflip import Config
 from pyimgflip.model import validate_parameters
@@ -63,22 +65,23 @@ class Meme(object):
     def parse_parameters(**kwargs):
 
         def _parse_list(list_):
-            return {
-                '[{}][{}]'.format(i, k_): v_
-                for i in range(len(list_))
-                for k_, v_ in list_[i].items()
-            }
+            return {'[{}][{}]'.format(i, k_): v_
+                    for i in range(len(list_))
+                    for k_, v_ in list_[i].items()}
 
-        result = {}
+        result = OrderedDict()
 
         for k, v in kwargs.items():
             if isinstance(v, list):
-                result.update({
-                    unquote(''.join([k, k_parsed])): v_parsed
-                    for k_parsed, v_parsed in _parse_list(v).items()
-                })
+                # I've had to update these one at a time so that the keys get
+                # added in alphanumeric order, otherwise Python 2 butchers
+                # things and the query gets messed up.
+                for kp, vp in sorted(_parse_list(v).items(), key=itemgetter(0)):
+                    result.update({unquote(''.join([k, kp])): vp})
             else:
                 result.update({k: v})
+
+        logger.debug('Parsed parameters: {}'.format(result))
 
         return result
 

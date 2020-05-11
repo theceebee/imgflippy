@@ -1,13 +1,11 @@
+from __future__ import print_function
 import sys
 import logging
 import argparse
 import textwrap
 
 import pyimgflip
-from pyimgflip import Config, MemeTemplate
-from pyimgflip import model
-from pyimgflip import utils
-
+from pyimgflip import Config, MemeTemplate, model, utils
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(pyimgflip.__name__)
@@ -70,6 +68,8 @@ def main():
         formatter_class=argparse.RawTextHelpFormatter,
         help='Add a caption to meme template and print the resulting meme\'s '
              'image URL.')
+
+    add_caption_parser.add_argument('-d', '--debug', action='store_true')
 
     template_group = add_caption_parser.add_mutually_exclusive_group(
         required=True)
@@ -230,8 +230,11 @@ def main():
         if not isinstance(args.template, MemeTemplate):
             raise RuntimeError
 
+        if args.debug:
+            logger.setLevel(logging.DEBUG)
+
         kwargs = {k: v for k, v in vars(args).items() if
-                  k not in ['cmd', 'template']}
+                  k not in ['cmd', 'debug', 'template']}
 
         result = args.template.add_caption(**kwargs)
         print(result.url)
