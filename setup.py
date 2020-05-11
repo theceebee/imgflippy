@@ -1,8 +1,8 @@
-import textwrap
+import os
 from setuptools import find_packages, setup
 
-
-with open('README.md', 'r') as fh:
+this_dir = os.path.abspath(os.path.dirname(__file__))
+with open(os.path.join(this_dir, 'README.md'), 'r') as fh:
     long_description = fh.read()
 
 setup(
@@ -10,10 +10,8 @@ setup(
     version='0.0.1',
     author='Caleb Bell',
     author_email='caleb@theceebee.com',
-    description=textwrap.dedent('''\
-        An unofficial, open source Python and CLI wrapper for the imgflip
-        RESTful API (https:\\api.imgflip.com).'''),
-    keywords='imgflip meme',
+    description='An open source Python wrapper for the imgflip RESTful API (https://api.imgflip.com).',
+    keywords='imgflip meme API',
     long_description=long_description,
     long_description_content_type='text/markdown',
     url='https://github.com/theceebee/pyimgflip',
@@ -27,8 +25,8 @@ setup(
         'Programming Language :: Python :: 3'
     ],
     install_requires=[
-        'requests>=2.23',
-        'six>=1.14'
+        'requests',
+        'six'
     ],
     python_requires='>=2.7'
 )
