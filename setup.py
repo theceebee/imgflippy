@@ -7,7 +7,7 @@ with open(os.path.join(this_dir, 'README.md'), 'r') as fh:
 
 setup(
     name='imgflippy',
-    version='0.0.1',
+    version='0.0.2',
     author='Caleb Bell',
     author_email='caleb@theceebee.com',
     description='An open source Python wrapper for the imgflip RESTful API (https://api.imgflip.com).',
