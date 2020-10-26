@@ -27,7 +27,7 @@ Template ID |                      Name                      |               URL
 ...
 ```
 
-#####add_caption
+##### add_caption
 
 From the imgflip API documentation:
 > Add a caption to an Imgflip meme template. Images created with this API will be publicly accessible by anyone through
