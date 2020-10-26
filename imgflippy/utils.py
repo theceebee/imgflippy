@@ -3,7 +3,7 @@ import re
 import requests
 from six.moves.urllib.parse import urljoin
 
-from pyimgflip import Config, MemeTemplate
+from imgflippy import Config, MemeTemplate
 
 
 def get_templates():

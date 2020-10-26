@@ -4,11 +4,11 @@ import logging
 import argparse
 import textwrap
 
-import pyimgflip
-from pyimgflip import Config, MemeTemplate, model, utils
+import imgflippy
+from imgflippy import Config, MemeTemplate, model, utils
 
 logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(pyimgflip.__name__)
+logger = logging.getLogger(imgflippy.__name__)
 
 
 class TemplateAction(argparse.Action):
@@ -45,7 +45,7 @@ class BoxesAction(argparse.Action):
 def main():
 
     parser_ = argparse.ArgumentParser(
-        prog=pyimgflip.__name__,
+        prog=imgflippy.__name__,
         description=textwrap.dedent('''\
             An unofficial and open source Python interface for the imgflip 
             RESTful API (https://api.imgflip.com/).'''),
@@ -216,7 +216,7 @@ def main():
     args = parser_.parse_args()
 
     if hasattr(args, 'version'):
-        message = '{} v{}'.format(pyimgflip.__name__, pyimgflip.__version__)
+        message = '{} v{}'.format(imgflippy.__name__, imgflippy.__version__)
         parser_.exit(status=0, message=message)
 
     if not args.cmd:

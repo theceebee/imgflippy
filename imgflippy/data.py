@@ -6,8 +6,8 @@ from collections import OrderedDict
 import requests
 from six.moves.urllib.parse import unquote, urljoin
 
-from pyimgflip import Config
-from pyimgflip.model import validate_parameters
+from imgflippy import Config
+from imgflippy.model import validate_parameters
 
 logger = logging.getLogger(__name__)
 
