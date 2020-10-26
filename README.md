@@ -1,14 +1,14 @@
-# pyimgflip
-An open source Python interface for the [imgflip RESTful API](https://api.imgflip.com) `pyimgflip` has been developed
+# imgflippy
+An open source Python interface for the [imgflip RESTful API](https://api.imgflip.com) `imgflippy` has been developed
 to remain true to the original API while offering the conveniences that Python allows.
 
 ### Quickstart
-`pyimgflip` has been written with the intention of allowing for meme generation from either a command line
+`imgflippy` has been written with the intention of allowing for meme generation from either a command line
 interface *or* an interpreted environment.
 
-####Command Line
+#### Command Line
 
-#####get_memes
+##### get_memes
 Print a table of the popular memes that may be captioned with this API:
 
 From the imgflip API documentation:
@@ -18,7 +18,7 @@ From the imgflip API documentation:
 > have new properties.
 
 ```
-$ python -m pyimgflip get_memes
+$ python -m imgflippy get_memes
 Template ID |                      Name                      |               URL
 ------------+------------------------------------------------+---------------------------------
 112126428   | Distracted Boyfriend                           | https://i.imgflip.com/1ur9b0.jpg
