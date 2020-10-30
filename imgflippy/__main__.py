@@ -213,14 +213,14 @@ def main():
                              default=argparse.SUPPRESS,
                              dest='outline_color')
 
+    if not sys.argv[1:]:
+        parser_.exit(status=1, message=parser_.print_help())
+
     args = parser_.parse_args()
 
     if hasattr(args, 'version'):
         message = '{} v{}'.format(imgflippy.__name__, imgflippy.__version__)
         parser_.exit(status=0, message=message)
-
-    if not args.cmd:
-        parser_.error(message='too few arguments')
 
     # Display a table of the templates available for captioning.
     if args.cmd == 'get_memes':
